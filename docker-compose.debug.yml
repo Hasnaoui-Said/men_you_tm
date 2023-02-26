@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  menyoutm:
+    image: menyoutm
+    build:
+      context: .
+      dockerfile: ./Dockerfile
