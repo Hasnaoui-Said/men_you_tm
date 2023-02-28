@@ -5,14 +5,17 @@ class SearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Search",
-            style: TextStyle(color: Colors.black26, fontSize: 15)),
-        shadowColor: Colors.white54,
-        backgroundColor: Colors.white,
-        elevation: 0.2,
-        actions: [
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const Text("Search",
+              style: TextStyle(
+                color: Colors.black26,letterSpacing: 2,
+                fontSize: 17,
+              )
+          ),
           IconButton(
             icon: const Icon(
               Icons.search,

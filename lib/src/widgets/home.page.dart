@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:men_you_tm/src/widgets/CatItemHome.page.dart';
 
 import 'SearchBar.dart';
 
@@ -60,12 +61,35 @@ class _HomePageState extends State<HomePage>
                 flex: 1,
                 child: Image.asset(
                   'assets/images/logo_tm.jpg',
-                  width: 120,
+                  width: 95,
                 ))
           ],
         ),
       ),
-      body: const SearchBar()
+      // body: SearchBar(),
+      body: SingleChildScrollView(
+        child: Container(
+          child: Column(
+            children: const [
+              SearchBar(),
+              CatItemHome(),
+            ],
+          ),
+          // children: [
+          //   ListView(
+          //     children: const [
+          //       SearchBar(),
+          //       Divider(height: 4),
+          //       Text(
+          //         "Categories",
+          //         style: TextStyle(color: Colors.black54, fontSize: 22),
+          //       ),
+          //     ],
+          //   ),
+          //
+          // ],
+        ),
+      ),
     );
   }
 }
