@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "617273659661",
+    "project_id": "menyoutc",
+    "storage_bucket": "menyoutc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:617273659661:android:bab9190815f75d941e2044",
+        "android_client_info": {
+          "package_name": "com.example.men_you_tm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "617273659661-gkmvp87dce8fahhsdpb7tt1rchc8llit.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgszYQVUJX-wTQWyyJ1tiMslVuXNiAPL8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "617273659661-gkmvp87dce8fahhsdpb7tt1rchc8llit.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

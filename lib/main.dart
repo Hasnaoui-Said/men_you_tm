@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:men_you_tm/src/widgets/cart.page.dart';
 import 'package:men_you_tm/src/widgets/categories.page.dart';
 import 'package:men_you_tm/src/widgets/home.page.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() => runApp(const HomeApp());
+Future<void> main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(const HomeApp());
+}
 
 class HomeApp extends StatelessWidget {
   const HomeApp({super.key});
