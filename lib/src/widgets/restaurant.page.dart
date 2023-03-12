@@ -1,38 +1,50 @@
 import 'package:flutter/material.dart';
 
-class SearchBar extends StatelessWidget {
-  const SearchBar({Key? key}) : super(key: key);
+void main() => runApp(const RestaurantPage());
+
+class RestaurantPage extends StatelessWidget {
+  const RestaurantPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Restaurant'),
+      ),
+      body: Column(
         children: [
-          GestureDetector(
-            onTap: () {
-              showSearch(
-                context: context,
-                delegate: MySearchDelegate(),
-              );
-            },
-            child: const Text(
-              "Search",
-              style: TextStyle(
-                color: Colors.black26,
-                letterSpacing: 2,
-                fontSize: 17,
-              ),
+          Container(
+            margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    showSearch(
+                      context: context,
+                      delegate: MySearchDelegate(),
+                    );
+                  },
+                  child: const Text(
+                    "Search",
+                    style: TextStyle(
+                      color: Colors.black26,
+                      letterSpacing: 2,
+                      fontSize: 17,
+                    ),
+                  ),
+                ),
+                IconButton(
+                  icon: const Icon(
+                    Icons.search,
+                    color: Colors.black26,
+                  ),
+                  onPressed: () => {
+                    showSearch(context: context, delegate: MySearchDelegate())
+                  },
+                )
+              ],
             ),
-          ),
-          IconButton(
-            icon: const Icon(
-              Icons.search,
-              color: Colors.black26,
-            ),
-            onPressed: () =>
-                {showSearch(context: context, delegate: MySearchDelegate())},
           )
         ],
       ),
