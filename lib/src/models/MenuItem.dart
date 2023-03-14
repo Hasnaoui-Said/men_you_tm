@@ -6,6 +6,7 @@ class MenuItem {
   final double price;
   final String category;
   late bool isAddToCart;
+  late int count;
 
   MenuItem(
       {this.id = "",
@@ -14,12 +15,11 @@ class MenuItem {
       required this.imageStore,
       required this.description,
       this.price = 0,
+      this.count = 0,
       required this.category});
 
   @override
   String toString() {
-    return 'MenuItem{id: $id, name: $name, imageStore: $imageStore, description: $description, price: $price, category: $category}';
+    return 'MenuItem{id: $id, name: $name, imageStore: $imageStore, description: $description, price: $price, category: $category, isAddToCart: $isAddToCart, count: $count}';
   }
-
-
 }

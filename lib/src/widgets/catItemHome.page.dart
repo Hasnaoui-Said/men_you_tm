@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:men_you_tm/src/models/MenuItem.dart';
 import 'package:men_you_tm/src/services/MenuItemService.dart';
+import 'package:men_you_tm/src/services/converter/MenuItemConverter.dart';
 import 'package:men_you_tm/src/utils/local_storage.dart';
 
 import '../models/domains/ResponseBody.dart';
@@ -42,7 +43,8 @@ class _CatItemHomeState extends State<CatItemHome> {
     ResponseBody? res = await service.fetchItems(currentPage, sizePage);
     if (res != null) {
       items.addAll(res.data['content']);
-      List<MenuItem> menuItems = await service.convertData(items);
+      MenuItemConverter converter = MenuItemConverter();
+      List<MenuItem> menuItems = await converter.toBeans(items);
       setState(() {
         listItems.addAll(menuItems);
         totalPage = res.data['totalPages'];
