@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:men_you_tm/src/widgets/CatItemHome.page.dart';
+import 'package:men_you_tm/src/widgets/catItemHome.page.dart';
 
-import 'SearchBar.dart';
+import 'searchBar.dart';
 
 void main() => runApp(const HomePage());
 

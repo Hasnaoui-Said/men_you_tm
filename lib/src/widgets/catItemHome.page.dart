@@ -200,7 +200,7 @@ class _CatItemHomeState extends State<CatItemHome> {
                         ),
                       ),
                       Text(
-                        "${item.price}",
+                        "\$ ${item.price}",
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
                             fontSize: 16.0,
@@ -221,7 +221,7 @@ class _CatItemHomeState extends State<CatItemHome> {
   void _addOrRemoveItemToCart(String id) {
     for (MenuItem item in listItems) {
       if (item.id == id) {
-        LocalStorage.setMenu(id);
+        LocalStorage.setMenuTest(id);
         setState(() {
           item.isAddToCart = !item.isAddToCart;
         });
