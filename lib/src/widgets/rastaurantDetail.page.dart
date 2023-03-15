@@ -43,64 +43,66 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(250),
-        child: AppBar(
-          backgroundColor: Colors.grey[50],
-          elevation: 0,
-          foregroundColor: Colors.white,
-          flexibleSpace: _buildRestaurant
-              ? Image.network(
-                  restaurant.imageStore,
-                  fit: BoxFit.cover,
-                )
-              : const Center(child: CircularProgressIndicator()),
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(250),
+          child: AppBar(
+            backgroundColor: Colors.grey[50],
+            elevation: 0,
+            foregroundColor: Colors.white,
+            flexibleSpace: _buildRestaurant
+                ? Image.network(
+                    restaurant.imageStore,
+                    fit: BoxFit.cover,
+                    height: 250,
+                  )
+                : const Center(child: CircularProgressIndicator()),
+          ),
         ),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        _buildRestaurant ? restaurant.name : "",
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold,
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          _buildRestaurant ? restaurant.name : "",
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      _ratingStars(context, _buildRestaurant ? restaurant.rating :0)
-                    ],
-                  ),
-                  const SizedBox(height: 4.0),
-                  Text(
-                    _buildRestaurant ? restaurant.address:"",
-                    style: const TextStyle(
-                      fontSize: 15.0,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.grey,
+                        _ratingStars(
+                            context, _buildRestaurant ? restaurant.rating : 0)
+                      ],
                     ),
-                  ),
-                ],
+                    const SizedBox(height: 4.0),
+                    Text(
+                      _buildRestaurant ? restaurant.address : "",
+                      style: const TextStyle(
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [_buildMenuItems(context)],
-            ),
-          ],
-        ),
-      )
-    );
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [_buildMenuItems(context)],
+              ),
+            ],
+          ),
+        ));
   }
+
   Widget _ratingStars(BuildContext context, double rating) {
     String stars = '';
     String remainingStars = '';
@@ -124,7 +126,7 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
           style: const TextStyle(
               fontSize: 19.0,
               color: Colors.grey // Set color to grey for remaining stars
-          ),
+              ),
         ),
       ],
     );
@@ -133,10 +135,12 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
   Widget _buildMenuItems(BuildContext context) {
     List<Widget> menuItemsWidget = [];
 
-    if(_buildRestaurant){
+    if (_buildRestaurant) {
       for (int i = 0; i < restaurant.menuItems.length; i += 2) {
         var menuItem1 = restaurant.menuItems[i];
-        var menuItem2 = i + 1 < restaurant.menuItems.length ? restaurant.menuItems[i + 1] : null;
+        var menuItem2 = i + 1 < restaurant.menuItems.length
+            ? restaurant.menuItems[i + 1]
+            : null;
 
         // Create a row with two menu items
         var row = Row(
@@ -154,7 +158,7 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
 
         menuItemsWidget.add(row);
       }
-    }else{
+    } else {
       return const Center(child: CircularProgressIndicator());
     }
 
@@ -202,7 +206,8 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
                       decoration: BoxDecoration(
                         color: Colors.white60,
                         borderRadius: BorderRadius.circular(3),
-                        border: Border.all(width: 1.0, color: Colors.deepOrangeAccent),
+                        border: Border.all(
+                            width: 1.0, color: Colors.deepOrangeAccent),
                       ),
                       child: Icon(
                         Icons.shopping_cart_sharp,
@@ -259,6 +264,7 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
       ),
     );
   }
+
   void _addOrRemoveItemToCart(String id) {
     for (MenuItem item in restaurant.menuItems) {
       if (item.id == id) {

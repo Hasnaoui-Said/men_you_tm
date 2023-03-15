@@ -19,7 +19,7 @@ class LocalStorage {
     await prefs.setString('menuListItems', json.encode(menus));
   }
 
-  static FutureOr<List<Map<String, dynamic>>> getMenusTest() async {
+  static Future<List<Map<String, dynamic>>> getMenusTest() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var menuListItems = prefs.getString('menuListItems');
     if (menuListItems == null) {
@@ -68,5 +68,21 @@ class LocalStorage {
     }).toList();
 
     await prefs.setString('menuListItems', json.encode(menus));
+  }
+
+  static Future<void> saveEmail(String email) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('email', email);
+  }
+
+  static Future<String> getEmail() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? e = prefs.getString('email');
+    return e ?? "";
+  }
+
+  static Future<void> removeEmail() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.remove('email');
   }
 }

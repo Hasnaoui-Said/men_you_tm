@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:men_you_tm/src/widgets/cart.page.dart';
 import 'package:men_you_tm/src/widgets/restaurant.page.dart';
 import 'package:men_you_tm/src/widgets/home.page.dart';
+import 'package:men_you_tm/src/widgets/setting.page.dart';
 
 class HomeAppState extends StatefulWidget {
   const HomeAppState({super.key});
@@ -16,9 +17,7 @@ class _HomeAppStateState extends State<HomeAppState> {
     const HomePage(),
     const RestaurantPage(),
     const CartPage(),
-    const Center(
-      child: Text("Setting"),
-    )
+    const SettingPage()
   ];
 
   @override

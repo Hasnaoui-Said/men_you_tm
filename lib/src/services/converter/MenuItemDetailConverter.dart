@@ -1,17 +1,17 @@
-import 'package:men_you_tm/src/models/Order.dart';
+import 'package:men_you_tm/src/models/MenuItemDetail.dart';
 
-class OrderConverter {
-  Future<List<Order>> toBeans(dynamic list) async {
-    List<Order> items = [];
-    list.forEach((item) async {
-      Order menu = await toBean(item);
+class MenuItemDetailConverter {
+
+  List<MenuItemsDetail> toBeans(dynamic list) {
+    List<MenuItemsDetail> items = [];
+    list.forEach((item) {
+      MenuItemsDetail menu = toBean(item);
       items.add(menu);
     });
     return items;
   }
 
-  Future<Order> toBean(dynamic item) async {
-
-    return Order();
+  MenuItemsDetail toBean(dynamic item) {
+    return MenuItemsDetail(idMenuItem: item['idMenuItem'], count: item['count']);
   }
 }

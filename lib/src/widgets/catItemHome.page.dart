@@ -57,38 +57,37 @@ class _CatItemHomeState extends State<CatItemHome> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: ListView(
+    return ListView(
       controller: _scrollController,
       shrinkWrap: true,
       physics: const BouncingScrollPhysics(),
       children: <Widget>[
+    const Padding(
+      padding: EdgeInsets.all(15.0),
+      child: Text("filter Categories"),
+    ),
+    Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: <Widget>[
         const Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Text("Categories"),
+          padding: EdgeInsets.symmetric(horizontal: 20.0),
+          child: Text(
+            'List of menu',
+            textAlign: TextAlign.left,
+            style: TextStyle(
+              fontSize: 24.0,
+              fontWeight: FontWeight.w600,
+              letterSpacing: 1.2,
+            ),
+          ),
         ),
         Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0),
-              child: Text(
-                'List of menu',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.w600,
-                  letterSpacing: 1.2,
-                ),
-              ),
-            ),
-            Column(
-              children: [_buildMenuItems(context)],
-            ),
-          ],
-        )
+          children: [_buildMenuItems(context)],
+        ),
       ],
-    ));
+    )
+      ],
+    );
   }
 
   Widget _buildMenuItems(BuildContext context) {

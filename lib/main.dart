@@ -17,7 +17,7 @@ class HomeApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           scaffoldBackgroundColor: Colors.grey[50],
-          primaryColor: Colors.deepOrangeAccent,
+          primaryColor: Colors.deepOrange,
           primarySwatch: Colors.orange,
         ),
         home: const HomeAppState()

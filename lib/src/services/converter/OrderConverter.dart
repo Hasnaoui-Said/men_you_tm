@@ -1,38 +1,30 @@
-import 'dart:ffi';
+import 'package:men_you_tm/src/models/MenuItemDetail.dart';
+import 'package:men_you_tm/src/models/Order.dart';
+import 'package:men_you_tm/src/services/converter/MenuItemDetailConverter.dart';
 
-import 'package:men_you_tm/src/models/MenuItem.dart';
-import 'package:men_you_tm/src/utils/local_storage.dart';
-
-class MenuItemConverter {
-  Future<List<MenuItem>> toBeans(dynamic list) async {
-    List<MenuItem> items = [];
-    list.forEach((item) async {
-      MenuItem menu = await toBean(item);
+class OrderConverter {
+  List<Order> toBeans(dynamic orders) {
+    List<Order> items = [];
+    orders.forEach((order) {
+      Order menu = toBean(order);
       items.add(menu);
     });
     return items;
   }
 
-  Future<MenuItem> toBean(dynamic item) async {
-    List<Map<String, dynamic>> menus = await LocalStorage.getMenusTest();
-
-    List<String> ids = menus.map((e) => e['id'].toString()).toList();
-    int count = 0;
-    for (var menu in menus) {
-      if(menu['id'] == item['id']){
-        count = int.parse("${menu["count"]}");
-      }
-    }
-
-
-    return MenuItem(
-        count: count,
-        id: item['id'],
-        name: item['name'],
-        description: item['description'],
-        category: item['category'],
-        imageStore: item['imageStore'],
-        price: item['price'],
-        isAddToCart: menus.isNotEmpty ? ids.contains(item["id"]) : false);
+  Order toBean(dynamic order) {
+    MenuItemDetailConverter converter = MenuItemDetailConverter();
+    List<MenuItemsDetail> items = converter.toBeans(order['menuItemsDetail']);
+    return Order(
+        menuItemsDetail: items,
+        typeOrder: order['typeOrder'],
+        customerId: order['customerId'],
+        deliveryAddress: order['deliveryAddress'],
+        id: order['id'],
+        dateCreate: order['dateCreate'],
+        status: order['status'],
+        timeDelivery: order['timeDelivery'],
+        totalPay: order['totalPay'],
+    );
   }
 }
