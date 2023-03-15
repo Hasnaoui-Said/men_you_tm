@@ -84,83 +84,82 @@ class _RestaurantPageState extends State<RestaurantPage> {
           Expanded(
               child: ListView.builder(
                   itemBuilder: (context, index) {
-                    return ListTile(
+                    return GestureDetector(
                       onTap: () {
-                        Navigator.push(context,
+                        Navigator.push(
+                            context,
                             MaterialPageRoute(
-                                builder: (context) => RestaurantDetailPage(idRestaurant: listRestaurants[index].id,)
-                            )
-                        );
+                                builder: (context) => RestaurantDetailPage(
+                                      idRestaurant: listRestaurants[index].id,
+                                    )));
                       },
-                      title: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Expanded(
-                              child: Container(
-                                padding: const EdgeInsets.all(20),
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius:
-                                  const BorderRadius.all(Radius.circular(10)),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.2),
-                                      spreadRadius: 5,
-                                      blurRadius: 7,
-                                      offset: const Offset(0, 3),
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(
+                          horizontal: 25.0,
+                          vertical: 25.0,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15.0),
+                          border: Border.all(width: 1.0, color: Colors.grey[200]!),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Stack(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(15.0),
+                                  child: Hero(
+                                    tag: listRestaurants[index].imageStore,
+                                    child: Image.network(
+                                      listRestaurants[index].imageStore,
+                                      height: 220.0,
+                                      width: double.infinity,
+                                      fit: BoxFit.cover,
                                     ),
-                                  ],
+                                  ),
                                 ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        Image.network(
-                                          listRestaurants[index].imageStore,
-                                          height: 150.0,
-                                          width: 280.0,
-                                          fit: BoxFit.cover,
+                              ],
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(12.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        listRestaurants[index].name,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: const TextStyle(
+                                          fontSize: 20.0,
+                                          fontWeight: FontWeight.bold,
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(12.0),
-                                          child: Column(
-                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Row(
-                                                mainAxisAlignment: MainAxisAlignment.end,
-                                                children: [
-                                                  Text(
-                                                    listRestaurants[index].name,
-                                                    overflow: TextOverflow.ellipsis,
-                                                    style: const TextStyle(
-                                                      fontSize: 18.0,
-                                                      fontWeight: FontWeight.bold,
-                                                    ),
-                                                  ),
-                                                  _ratingStars(context, listRestaurants[index].rating)
-                                                ],
-                                              ),
-                                              const SizedBox(height: 4.0),
-                                              Text(
-                                                listRestaurants[index].address,
-                                                style: const TextStyle(
-                                                  fontSize: 15.0,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: Colors.grey,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
+                                      ),
+                                      _ratingStars(context, listRestaurants[index].rating)
+                                    ],
+                                  ),
+                                  const SizedBox(height: 4.0),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        listRestaurants[index].address,
+                                        style: const TextStyle(
+                                          fontSize: 16.0,
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.grey,
                                         ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              )
-                          )
-                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   },
