@@ -5,7 +5,9 @@ import 'package:men_you_tm/src/widgets/home.page.dart';
 import 'package:men_you_tm/src/widgets/setting.page.dart';
 
 class HomeAppState extends StatefulWidget {
-  const HomeAppState({super.key});
+  const HomeAppState({
+    super.key,
+  });
 
   @override
   State<HomeAppState> createState() => _HomeAppStateState();
@@ -19,6 +21,11 @@ class _HomeAppStateState extends State<HomeAppState> {
     const CartPage(),
     const SettingPage()
   ];
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,58 +63,57 @@ class _HomeAppStateState extends State<HomeAppState> {
     );
   }
 
-
-  //
-  // Widget builds(BuildContext context) {
-  //   return Scaffold(
-  //     bottomNavigationBar: NavigationBar(
-  //       onDestinationSelected: (int index) {
-  //         setState(() {
-  //           currentPageIndex = index;
-  //         });
-  //       },
-  //       selectedIndex: currentPageIndex,
-  //       destinations: const <Widget>[
-  //         NavigationDestination(
-  //           icon: Icon(Icons.home),
-  //           label: 'Home',
-  //         ),
-  //         NavigationDestination(
-  //           icon: Icon(
-  //             Icons.category,
-  //           ),
-  //           label: 'Categories',
-  //         ),
-  //         NavigationDestination(
-  //           selectedIcon: Icon(
-  //             Icons.add_shopping_cart_outlined,
-  //           ),
-  //           icon: Icon(
-  //             Icons.add_shopping_cart_outlined,
-  //           ),
-  //           label: 'Cart',
-  //         ),
-  //         NavigationDestination(
-  //           selectedIcon: Icon(
-  //             Icons.more_horiz,
-  //           ),
-  //           icon: Icon(
-  //             Icons.more_horiz,
-  //           ),
-  //           label: 'Settings',
-  //         ),
-  //       ],
-  //     ),
-  //     body: <Widget>[
-  //       const HomePage(),
-  //       const CategoriesPage(),
-  //       const CartPage(),
-  //       Container(
-  //         color: Colors.green,
-  //         alignment: Alignment.center,
-  //         child: const Text('Page 2'),
-  //       ),
-  //     ][currentPageIndex],
-  //   );
-  // }
+//
+// Widget builds(BuildContext context) {
+//   return Scaffold(
+//     bottomNavigationBar: NavigationBar(
+//       onDestinationSelected: (int index) {
+//         setState(() {
+//           currentPageIndex = index;
+//         });
+//       },
+//       selectedIndex: currentPageIndex,
+//       destinations: const <Widget>[
+//         NavigationDestination(
+//           icon: Icon(Icons.home),
+//           label: 'Home',
+//         ),
+//         NavigationDestination(
+//           icon: Icon(
+//             Icons.category,
+//           ),
+//           label: 'Categories',
+//         ),
+//         NavigationDestination(
+//           selectedIcon: Icon(
+//             Icons.add_shopping_cart_outlined,
+//           ),
+//           icon: Icon(
+//             Icons.add_shopping_cart_outlined,
+//           ),
+//           label: 'Cart',
+//         ),
+//         NavigationDestination(
+//           selectedIcon: Icon(
+//             Icons.more_horiz,
+//           ),
+//           icon: Icon(
+//             Icons.more_horiz,
+//           ),
+//           label: 'Settings',
+//         ),
+//       ],
+//     ),
+//     body: <Widget>[
+//       const HomePage(),
+//       const CategoriesPage(),
+//       const CartPage(),
+//       Container(
+//         color: Colors.green,
+//         alignment: Alignment.center,
+//         child: const Text('Page 2'),
+//       ),
+//     ][currentPageIndex],
+//   );
+// }
 }

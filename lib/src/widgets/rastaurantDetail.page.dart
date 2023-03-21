@@ -54,6 +54,20 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
                     restaurant.imageStore,
                     fit: BoxFit.cover,
                     height: 250,
+                    loadingBuilder: (BuildContext context, Widget child,
+                        ImageChunkEvent? loadingProgress) {
+                      if (loadingProgress == null) {
+                        return child;
+                      }
+                      return Center(
+                        child: CircularProgressIndicator(
+                          value: loadingProgress.expectedTotalBytes != null
+                              ? loadingProgress.cumulativeBytesLoaded /
+                                  loadingProgress.expectedTotalBytes!
+                              : null,
+                        ),
+                      );
+                    },
                   )
                 : const Center(child: CircularProgressIndicator()),
           ),
@@ -192,6 +206,20 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
                       height: 150.0,
                       width: double.infinity,
                       fit: BoxFit.cover,
+                      loadingBuilder: (BuildContext context, Widget child,
+                          ImageChunkEvent? loadingProgress) {
+                        if (loadingProgress == null) {
+                          return child;
+                        }
+                        return Center(
+                          child: CircularProgressIndicator(
+                            value: loadingProgress.expectedTotalBytes != null
+                                ? loadingProgress.cumulativeBytesLoaded /
+                                loadingProgress.expectedTotalBytes!
+                                : null,
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ),

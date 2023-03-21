@@ -83,6 +83,7 @@ class LocalStorage {
 
   static Future<void> removeEmail() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    print("log out");
     prefs.remove('email');
   }
 }

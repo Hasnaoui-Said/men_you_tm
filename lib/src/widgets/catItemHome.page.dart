@@ -62,30 +62,30 @@ class _CatItemHomeState extends State<CatItemHome> {
       shrinkWrap: true,
       physics: const BouncingScrollPhysics(),
       children: <Widget>[
-    const Padding(
-      padding: EdgeInsets.all(15.0),
-      child: Text("filter Categories"),
-    ),
-    Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: <Widget>[
         const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.0),
-          child: Text(
-            'List of menu',
-            textAlign: TextAlign.left,
-            style: TextStyle(
-              fontSize: 24.0,
-              fontWeight: FontWeight.w600,
-              letterSpacing: 1.2,
-            ),
-          ),
+          padding: EdgeInsets.all(15.0),
+          child: Text("filter Categories"),
         ),
         Column(
-          children: [_buildMenuItems(context)],
-        ),
-      ],
-    )
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
+              child: Text(
+                'List of menu',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontSize: 24.0,
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: 1.2,
+                ),
+              ),
+            ),
+            Column(
+              children: [_buildMenuItems(context)],
+            ),
+          ],
+        )
       ],
     );
   }
@@ -145,6 +145,23 @@ class _CatItemHomeState extends State<CatItemHome> {
                       height: 150.0,
                       width: double.infinity,
                       fit: BoxFit.cover,
+                      loadingBuilder: (BuildContext context, Widget child,
+                          ImageChunkEvent? loadingProgress) {
+                        if (loadingProgress == null) {
+                          return child;
+                        }
+                        return SizedBox(
+                          height: 150,
+                          child: Center(
+                            child: CircularProgressIndicator(
+                              value: loadingProgress.expectedTotalBytes != null
+                                  ? loadingProgress.cumulativeBytesLoaded /
+                                      loadingProgress.expectedTotalBytes!
+                                  : null,
+                            ),
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ),
@@ -159,7 +176,8 @@ class _CatItemHomeState extends State<CatItemHome> {
                       decoration: BoxDecoration(
                         color: Colors.white60,
                         borderRadius: BorderRadius.circular(3),
-                        border: Border.all(width: 1.0, color: Colors.deepOrangeAccent),
+                        border: Border.all(
+                            width: 1.0, color: Colors.deepOrangeAccent),
                       ),
                       child: Icon(
                         Icons.shopping_cart_sharp,
